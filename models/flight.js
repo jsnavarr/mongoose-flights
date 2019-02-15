@@ -1,6 +1,16 @@
 var mongoose = require('mongoose');
  // optional shortcut to the mongoose.Schema class
  var Schema = mongoose.Schema;
+ 
+ var destinationSchema = new Schema ({
+    airport: {
+        type: String,
+        enum: ['AUS', 'DAL', 'LAX', 'SEA']
+    },
+    arrival: {
+        type: Date
+    }
+ });
 
  var flightSchema = new Schema({
     airline: {
@@ -15,15 +25,21 @@ var mongoose = require('mongoose');
         required: true
     },
     departs: {
-        type: Date
-        // default: function(){
-        //     // var year = new Date().getFullYear()+1;
-        //     // var month = new Date().getMonth()+1;
-        //     // var day = new Date().getDate()
-        //     // var hours = new Date().getHours();
-        //     // var min = new Date().getMinutes();
-        //     return new Date();
-        // },
+        type: Date,
+        default: function(){
+            var now = new Date();
+            var oneYr = new Date();
+            oneYr.setYear(now.getFullYear() + 1);
+            return oneYr;
+        }
+    },
+    airport: {
+        type: String,
+        enum: ['AUS', 'DAL', 'LAX', 'SEA'],
+        default: 'SEA'
+    },
+    destinations: {
+        type: [destinationSchema]
     }
  });    
 

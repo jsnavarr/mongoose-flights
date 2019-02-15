@@ -1,8 +1,112 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  text-align: center;
+  margin: 0;
 }
 
-a {
-  color: #00B7FF;
+table {
+  margin: 0 auto;
 }
+
+h1 {
+  font-size: 30px;
+  color: blue;
+  margin: 100px auto 10px auto;
+}
+
+th {
+  font-weight: 600;
+  font-size: 26px;
+  padding: 10px 50px;
+  border: 2px solid blue;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: lightgray;
+}
+
+td {
+  font-size: 20px;
+  text-align: center;
+  padding: 10px;
+  border: 2px solid blue;
+}
+
+input, select {
+  font-size: 16px;
+}
+/* a {
+  color: #00B7FF;
+  font-size: 24px;
+} */
+
+.addNewFlight{
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+    margin: 0 auto;
+    width: 30%;
+    font-size: 16px;
+    border: 2px solid blue;
+    border-radius: 20px;
+    padding: 20px 40px;
+}
+
+.showFlight {
+  width: 80%;
+  margin: 0 auto;
+}
+
+label {
+  display: flex;
+}
+
+#addFlightButton, #addDestinationButton {
+  font-size: 16px;
+  font-weight: 600;
+  padding: 5px 20px;
+  background-color: lightgreen;
+  border-color: blue;
+  border-radius: 10px;
+  margin: 20px auto;
+  display:flex;
+}
+
+/* styling for navigation bar */
+nav {
+  margin: 0 0 50px 0;
+  display: flex;
+  flex-direction: row;
+  background-color: deepskyblue;
+  justify-content: center;
+}
+nav a{
+  text-decoration: none;
+  color: darkblue;
+  font-size: 24px;
+  font-weight: 600;
+  padding: 10px 50px;
+}
+
+nav a:hover{
+  background:royalblue;
+  color: white;
+  border-radius: 10px;
+}
+
+/* .link-to-edit-add {
+  font-size: 18px;
+  color: blue;
+}
+
+#delete-form {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+#delete-form button {
+  color: red;
+}
+
+li {
+  list-style: none;
+} */
