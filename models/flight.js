@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
  // optional shortcut to the mongoose.Schema class
  var Schema = mongoose.Schema;
  
+ 
  var destinationSchema = new Schema ({
     airport: {
         type: String,
@@ -40,7 +41,8 @@ var mongoose = require('mongoose');
     },
     destinations: {
         type: [destinationSchema]
-    }
+    },
+    // tickets: {type: Schema.Types.ObjectId, ref: 'Ticket'}
  });    
 
  module.exports = mongoose.model('Flight', flightSchema);

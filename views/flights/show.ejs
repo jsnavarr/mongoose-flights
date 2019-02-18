@@ -20,43 +20,61 @@
             </tbody>
         </table>
     </div>
-    <h1>Add Destination</h1>
-    <form id="add-dest-form" method="POST"
-        action="/flights/<%= flight._id %>/destinations">
+    <h1>Tickets</h1>
+    <% if (tickets.length) { %>
         <table>
-            <thead>
-                <tr>
-                    <th><label>Destination:</label></th>
-                    <th><label>Arrival</label></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <select name="airport">
-                            <option value="AUS">AUS</option>
-                            <option value="DAL">DAL</option>
-                            <option value="LAX">LAX</option>
-                            <option value="SEA">SEA</option>
-                        </select>
-                    </td>
-                    <td>
-                        <input type="datetime-local" name="arrival">
-                    </td>
-                </tr>
-            </tbody>
+          <thead>
+              <tr>
+                  <th>Seat</th>
+                  <th>Price</th>
+              </tr>
+          </thead>
+          <tbody>
+            <% tickets.forEach(function(t) { %>
+              <tr>
+                <td><%= t.seat %></td>
+                <td><%= t.price %></td>
+                <td>
+                <form method="POST" 
+                action="/tickets/<%= t._id %>?_method=DELETE">
+                    <input type="submit" value = "Delete"> 
+                </form>
+                </td>
+                <!-- <td><a href="/flights/<%= flight._id %>/tickets/<%= t._id %>">Delete</a></td> -->
+              </tr>
+            <% }); %>
+          </tbody>
         </table>
-        <td>
-            <input id="addDestinationButton" type="submit" value="Add Destination">
-        </td>
-    </form>
+      <% } else { %>
+        <h5>No Tickets for this flight yet</h5>
+      <% } %>
+  
+      <h1>Add Ticket</h1>
+            <form method="POST"
+                action="/flights/<%= flight._id %>/tickets">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Seat:</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" name="seat"></td>
+                            <td><input type="text" name="price"></label></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <input id="addTicketButton" type="submit" value="Add Ticket">
+            </form>    
     <h1>Current Destinations</h1>
     <% if (flight.destinations.length) { %>
       <table>
         <thead>
             <tr>
-                <th>Airport</th>
-                <th>Arrival</th>
+                <th><label>Airport</label></th>
+                <th><label>Arrival</label></th>
             </tr>
         </thead>
         <tbody>
@@ -71,5 +89,36 @@
     <% } else { %>
       <h5>No Destinations added Yet</h5>
     <% } %>
-    
+
+    <h1>Add Destination</h1>
+    <form id="add-dest-form" method="POST"
+        action="/flights/<%= flight._id %>/destinations">
+        <table>
+            <thead>
+                <tr>
+                    <th><label>Destination:</label></th>
+                    <th><label>Arrival</label></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <select name="airport">
+                            <%- dest.map(d => `<option value="${d}">${d}</option>`).join('') %>
+                            <!-- <option value="AUS">AUS</option>
+                            <option value="DAL">DAL</option>
+                            <option value="LAX">LAX</option>
+                            <option value="SEA">SEA</option> -->
+                        </select>
+                    </td>
+                    <td>
+                        <input type="datetime-local" name="arrival">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <td>
+            <input id="addDestinationButton" type="submit" value="Add Destination">
+        </td>
+    </form>    
 <%- include('../partials/footer') %>
