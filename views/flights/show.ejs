@@ -34,10 +34,10 @@
               <tr>
                 <td><%= t.seat %></td>
                 <td><%= t.price %></td>
-                <td>
+                <td id = "cell-with-button">
                 <form method="POST" 
                 action="/tickets/<%= t._id %>?_method=DELETE">
-                    <input type="submit" value = "Delete"> 
+                    <input id="delete-ticket-button" type="submit" value = "Delete"> 
                 </form>
                 </td>
                 <!-- <td><a href="/flights/<%= flight._id %>/tickets/<%= t._id %>">Delete</a></td> -->

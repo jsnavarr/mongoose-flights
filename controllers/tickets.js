@@ -18,10 +18,14 @@ function create(req, res) {
 }    
 
 function deleteTicket(req, res) {
-    console.log('trying to delete ticket');
-    console.log('ticket id'+ req.params.id);
     Ticket.findById(req.params.id, function(err, ticket) {
-        console.log('ticket '+ticket);
-        res.redirect('/flights/' + req.params.id);
+        var flight_id = ticket.flight; //to redirect to /flights/:id
+        ticket.delete(function(err, ticket){
+            if(err){
+                console.log('error deleting ticket')
+            } else {
+                res.redirect('/flights/' + ticket.flight);
+            }
+        });
         });
   }

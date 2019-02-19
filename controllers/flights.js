@@ -16,6 +16,7 @@ function index(req, res) {
 
 function show(req, res) {
   Flight.findById(req.params.id, function(err, flight) {
+    
     Ticket.find({flight: flight._id}, function(err, tickets) {
       //get an array with destinations excluding the flight airport and 
       //any destination airport already added
@@ -27,6 +28,10 @@ function show(req, res) {
           dest.splice(dest.indexOf(flight.destinations[i].airport), 1);
         }
       }
+    flight.destinations.sort(function(a, b){
+      if (a.arrival > b.arrival) return 1;
+      return -1;
+    });
     res.render('flights/show', { title: 'Flight Details', flight, tickets, dest });
     });
   });

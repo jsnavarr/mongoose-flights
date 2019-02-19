@@ -61,7 +61,7 @@ label {
 }
 
 #addFlightButton, #addDestinationButton, #addTicketButton {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
   padding: 5px 20px;
   background-color: lightgreen;
@@ -69,6 +69,29 @@ label {
   border-radius: 10px;
   margin: 20px auto;
   display:flex;
+}
+
+#addFlightButton:hover, #addDestinationButton:hover, #addTicketButton:hover {
+  background-color: yellow;
+}
+
+
+#delete-ticket-button {
+  font-size: 18px;
+  font-weight: 600;
+  background-color: coral;
+  border-color: black;
+  border-radius: 10px;
+  padding: 5px 15px;
+}
+
+#delete-ticket-button:hover {
+  background-color: red;
+  color: white;
+}
+
+#cell-with-button {
+  border: none;
 }
 
 /* styling for navigation bar */
